@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<!-- saved from url=(0030)https://aj6xv12.neocities.org/ -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><link rel="shortcut icon" href="https://humantooth.neocities.org/dogj.png" type="image/x-icon">
+
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>evil dog</title>
+    <style>
+        /* Import the Papyrus font using @font-face */
+        @font-face {
+            font-family: 'Papyrus';
+            src: url('https://aj6xv12.neocities.org/papyrus-webfont.woff2') format('woff2'),
+                 url('https://aj6xv12.neocities.org/papyrus-webfont.woff') format('woff');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        body {
+            margin: 0;
+            overflow: hidden;
+            height: 100vh;
+            background: url('https://i.pinimg.com/originals/da/d8/7a/dad87ac6f3de74bb50c02ab49d4c4c27.gif') no-repeat center center fixed;
+            background-size: cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        img {
+            position: absolute;
+            pointer-events: none;
+        }
+
+        /* Template Image in the top-left corner */
+        #template-image {
+            width: 250px;
+            height: 250px;
+            top: 10px;  /* Slight margin from top */
+            left: 10px; /* Slight margin from left */
+            z-index: 10; /* Ensure it is on top */
+        }
+
+        #follower {
+            width: 200px;
+            height: 200px;
+            z-index: 20; /* Ensure it is on top */
+        }
+
+        #screensaver {
+            width: 100px;
+            height: 100px;
+            z-index: 20; /* Put it behind the follower */
+            pointer-events: none;
+        }
+
+
+        .overlay-text {
+            position: absolute;
+            top: 20px;
+            color: white;
+            font-size: 28px; /* Slightly increased font size */
+            font-family: 'Papyrus', sans-serif;  /* Use the imported Papyrus font */
+            text-align: center;
+            width: 100%;
+            z-index: 14; /* Ensure overlay text is above both images */
+        }
+        
+        .middle-text {
+            position: absolute;
+            color: white;
+            font-size: 50px;
+            font-family: 'Papyrus', sans-serif; /* Use Papyrus font */
+            text-align: center;
+            z-index: 25; /* Ensure the text is above the background */
+            background-color: rgba(0, 0, 0, 0.4); /* Semi-transparent background */
+            padding: 10px 20px; /* Padding around the text */
+            border-radius: 20px; /* More rounded corners */
+        }
+
+        /* Add styles for the clickable link */
+        .bottom-left-link {
+            position: absolute;
+            bottom: 10px;
+            left: 10px;
+            color: white;
+            font-size: 18px;
+            font-family: 'Papyrus', sans-serif; /* Use the imported Papyrus font */
+            text-decoration: none;
+            z-index: 20; /* Ensure the link is above other elements */
+            background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background for visibility */
+            padding: 5px 10px;
+            border-radius: 5px;
+        }
+
+        .bottom-left-link:hover {
+            background-color: rgba(255, 255, 255, 0.7);
+            color: black;
+        }
+
+        /* Text under the template image */
+        #template-text {
+            position: absolute;
+            top: 10px; /* Position below the image */
+            left: 10px;
+            color: white;
+            font-family: 'Papyrus', sans-serif;
+            font-size: 30px;
+            z-index: 19;
+        }
+    </style>
+</head>
+<body>
+    
+
+    
+
+    <!-- Template image in top-left corner -->
+    
+
+    <!-- Text under the template image -->
+    
+
+    <img id="follower" src="https://i.imgur.com/M9Qs1BA.png" alt="dog" style="left: 705px; top: -96px;">
+    
+    <!-- First Screensaver Image -->
+    <img id="screensaver" src="https://media1.tenor.com/m/-5G8GFvXkdAAAAAd/impish-soyak-ears-dance.gif" alt="screensaver" style="left: 446.635px; top: 88.4291px;">
+
+    <!-- Background Music (Invisible) -->
+    <iframe id="background-music" style="position: absolute; width: 0; height: 0; border: none;" src="https://www.youtube.com/watch?v=MsntxeL0N5I" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen="">
+    </iframe>
+
+    <!-- Clickable link -->
+    
+
+    <script>
+        const follower = document.getElementById('follower');
+        const iframe = document.getElementById('background-music');
+        const screensaver = document.getElementById('screensaver');
+
+        // Move the dog image based on mouse movement
+        document.addEventListener('mousemove', (event) => {
+            follower.style.left = `${event.pageX - 100}px`;
+            follower.style.top = `${event.pageY - 100}px`;
+        });
+
+        // Play sound after user clicks on the page, but prevent it from restarting
+        let musicPlayed = false;  // Flag to track if music has been played
+        window.addEventListener('click', function() {
+            if (!musicPlayed) {
+                iframe.src = iframe.src + "&autoplay=1";  // Trigger autoplay only once
+                musicPlayed = true;  // Set the flag to true so it doesn't play again
+            }
+        });
+
+        // Screensaver 1 bouncing functionality
+        let screensaverX = Math.random() * (window.innerWidth - 100);
+        let screensaverY = Math.random() * (window.innerHeight - 100);
+        let screensaverSpeedX = 2; // Speed in the X direction
+        let screensaverSpeedY = 2; // Speed in the Y direction
+
+        function moveScreensaver() {
+            screensaverX += screensaverSpeedX;
+            screensaverY += screensaverSpeedY;
+
+            if (screensaverX <= 0 || screensaverX >= window.innerWidth - 100) {
+                screensaverSpeedX = -screensaverSpeedX;
+            }
+            if (screensaverY <= 0 || screensaverY >= window.innerHeight - 100) {
+                screensaverSpeedY = -screensaverSpeedY;
+            }
+
+            screensaver.style.left = `${screensaverX}px`;
+            screensaver.style.top = `${screensaverY}px`;
+        }
+
+        // Move both screensavers every 16ms (approximately 60fps)
+        setInterval(moveScreensaver, 16);
+    </script>
+
+
+</body></html>
